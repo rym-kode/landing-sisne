@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RYM TECH | Digitalización y optimización de procesos para pymes y empresas</title>
+  <meta name="description" content="RYM TECH digitaliza y optimiza procesos manuales, con o sin inteligencia artificial, y entrega métricas continuas para que tu empresa decida con datos. SISNE es nuestra división para pymes.">
+  <meta name="theme-color" content="#4CC3F7">
+  <meta property="og:title" content="RYM TECH | Digitalización y optimización de procesos">
+  <meta property="og:description" content="Digitalizamos y optimizamos tu operación, con o sin IA, y medimos los resultados de forma continua.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<!--
+  PLANTILLAS: mientras <body> tenga el atributo data-template se muestran las etiquetas "Plantilla"
+  sobre los bloques que hay que completar (proyectos, resultados, testimonio, logos).
+  Cuando termines de cargar el contenido real, borrá ese atributo y las etiquetas desaparecen.
+-->
+<body data-template>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2-6 4 12 2-6h6"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-4 3-6 6.5-6s6 2 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14c3 .2 4.6 2 5 5"/></symbol>
+</svg>
+
+<a class="skip" href="#contenido">Ir al contenido</a>
+
+<header class="header" id="header">
+  <div class="container header__bar">
+    <a class="brand" href="#inicio" aria-label="RYM TECH, inicio">
+      <img src="assets/logo-mark.svg" alt="" width="36" height="36">
+      <span class="brand__name">RYM<span>TECH</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#ia">Con o sin IA</a>
+      <a href="#metodo">Método</a>
+      <a href="#sisne">SISNE</a>
+      <a href="#proyectos">Proyectos</a>
+      <a class="btn btn--sm btn--dark nav__cta" href="#contacto">Agendá una reunión</a>
+    </nav>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+      <svg class="ico ico--lg" aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <h1>Digitalizamos y optimizamos tu operación para que decidas con datos.</h1>
+        <p class="lead">Ayudamos a pymes y empresas con procesos manuales. Primero entendemos cómo funciona tu negocio; después digitalizamos y optimizamos sus procesos —con o sin inteligencia artificial— y los medimos todos los días, para que veas qué pasa y decidas con información.</p>
+        <div class="actions">
+          <a class="btn btn--dark" href="#contacto">Cotizá tu caso</a>
+          <a class="btn btn--line" href="#sisne">Conocé SISNE para pymes</a>
+        </div>
+        <ul class="hero__points">
+          <li>Procesos digitalizados</li>
+          <li>Operación optimizada</li>
+          <li>Métricas continuas</li>
+        </ul>
+      </div>
+
+      <div class="hero__viz">
+        <div class="viz" id="viz" data-state="before">
+          <div class="viz__head">
+            <div class="viz__title" aria-live="polite">
+              <span class="viz__t viz__t--before">Planilla de pedidos</span>
+              <span class="viz__t viz__t--after">Tablero de pedidos</span>
+            </div>
+            <button class="viz__replay" id="viz-replay" type="button">Ver de nuevo</button>
+          </div>
+          <div class="viz__body" role="img" aria-label="Ilustración: una planilla de celdas que se transforma en un gráfico de barras creciente">
+            <div class="viz__grid" id="viz-grid"></div>
+            <div class="viz__axis" id="viz-axis"></div>
+          </div>
+          <dl class="viz__kpis">
+            <div><dt>Tiempo por pedido</dt><dd>−38%</dd></div>
+            <div><dt>Pedidos procesados</dt><dd>+24%</dd></div>
+            <div><dt>Errores de carga</dt><dd>−61%</dd></div>
+          </dl>
+          <p class="viz__note">Datos ilustrativos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="clients" aria-label="Empresas con las que trabajamos">
+    <div class="container clients__wrap">
+      <p class="clients__title">Empresas que ya trabajan con RYM TECH<span class="tpl">Plantilla</span></p>
+      <ul class="clients__logos">
+        <li>Logo cliente</li><li>Logo cliente</li><li>Logo cliente</li><li>Logo cliente</li><li>Logo cliente</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROBLEMA -->
+  <section class="section" id="problema">
+    <div class="container">
+      <h2 class="h2 h2--wide">Si tu información vive en planillas, mails y chats, el negocio se maneja a ciegas.</h2>
+      <div class="compare" role="table" aria-label="Comparación entre trabajar a mano y trabajar con RYM TECH">
+        <div class="compare__row compare__row--head" role="row">
+          <span role="columnheader">Hoy</span>
+          <span role="columnheader">Con RYM TECH</span>
+        </div>
+        <div class="compare__row" role="row">
+          <span role="cell">Tareas repetidas, cargadas a mano</span>
+          <span role="cell">Procesos digitales y automáticos</span>
+        </div>
+        <div class="compare__row" role="row">
+          <span role="cell">Una planilla por área, sin una versión única</span>
+          <span role="cell">Información centralizada y ordenada</span>
+        </div>
+        <div class="compare__row" role="row">
+          <span role="cell">Los números llegan tarde, o no llegan</span>
+          <span role="cell">Métricas continuas, siempre actualizadas</span>
+        </div>
+        <div class="compare__row" role="row">
+          <span role="cell">Las decisiones se toman por intuición</span>
+          <span role="cell">Decisiones con datos del negocio</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section section--tight-top" id="servicios">
+    <div class="container">
+      <h2 class="h2">Qué hacemos</h2>
+      <div class="svc-list">
+        <article class="svc">
+          <h3 class="svc__name">Digitalización de procesos</h3>
+          <p class="svc__desc">Pasamos del papel, las planillas y los mails a sistemas que tu equipo usa todos los días.</p>
+          <ul class="svc__list">
+            <li>Relevamiento de procesos</li>
+            <li>Formularios, flujos y aprobaciones</li>
+            <li>Información centralizada</li>
+          </ul>
+        </article>
+        <article class="svc">
+          <h3 class="svc__name">Optimización de procesos</h3>
+          <p class="svc__desc">Revisamos cómo trabajás hoy, encontramos los cuellos de botella y rediseñamos el proceso antes de digitalizarlo.</p>
+          <ul class="svc__list">
+            <li>Mapa del proceso actual</li>
+            <li>Menos pasos y menos errores</li>
+            <li>Roles y responsables claros</li>
+          </ul>
+        </article>
+        <article class="svc">
+          <h3 class="svc__name">Automatización con o sin IA</h3>
+          <p class="svc__desc">Automatizamos las tareas repetitivas con reglas y flujos, y sumamos inteligencia artificial cuando mejora el resultado.</p>
+          <ul class="svc__list">
+            <li>Integración entre sistemas</li>
+            <li>Lectura y clasificación de documentos</li>
+            <li>Asistentes y alertas</li>
+          </ul>
+        </article>
+        <article class="svc">
+          <h3 class="svc__name">Métricas y tableros</h3>
+          <p class="svc__desc">Convertimos la operación en indicadores que se actualizan solos, para que veas qué pasa y decidas a tiempo.</p>
+          <ul class="svc__list">
+            <li>Indicadores definidos con vos</li>
+            <li>Tableros en tiempo real</li>
+            <li>Seguimiento mensual de mejoras</li>
+          </ul>
+        </article>
+        <article class="svc">
+          <h3 class="svc__name">Mantenimiento a medida</h3>
+          <p class="svc__desc">Después de implementar, seguimos a tu lado. Armamos un plan de mantenimiento según lo que necesita tu operación y mantenemos todo funcionando y mejorando.</p>
+          <ul class="svc__list">
+            <li>Soporte y corrección de errores</li>
+            <li>Ajustes y nuevas funciones</li>
+            <li>Mejoras a partir de las métricas</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CON O SIN IA -->
+  <section class="section section--hielo" id="ia">
+    <div class="container">
+      <div class="ia__intro">
+        <h2 class="h2">¿Con IA o sin IA? Lo que importa es que funcione.</h2>
+        <p class="lead lead--sm">Empezamos por entender tu negocio y cómo trabaja, no por la tecnología. A veces alcanza con ordenar y digitalizar. Otras, conviene automatizar. Y cuando la inteligencia artificial suma, la incorporamos.</p>
+      </div>
+      <div class="ladder">
+        <div class="ladder__step ladder__step--1">
+          <h3>Ordenar y digitalizar</h3>
+          <p>Sin IA. Procesos claros, información centralizada y menos trabajo manual.</p>
+        </div>
+        <div class="ladder__step ladder__step--2">
+          <h3>Automatizar</h3>
+          <p>Reglas y flujos que hacen solos las tareas repetitivas.</p>
+        </div>
+        <div class="ladder__step ladder__step--3">
+          <h3>Sumar IA</h3>
+          <p>Lectura de documentos, asistentes y predicciones, solo donde aportan valor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section class="section" id="metodo">
+    <div class="container">
+      <h2 class="h2 h2--wide">Primero entendemos tu negocio. Después construimos.</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__n">1</span>
+          <h3>Diagnóstico</h3>
+          <p>Nos metemos en tu operación: hablamos con quienes la hacen funcionar, relevamos cada proceso y definimos qué medir.</p>
+        </li>
+        <li class="step">
+          <span class="step__n">2</span>
+          <h3>Diseño</h3>
+          <p>Rediseñamos el proceso y elegimos la solución, con o sin IA.</p>
+        </li>
+        <li class="step">
+          <span class="step__n">3</span>
+          <h3>Implementación</h3>
+          <p>Construimos, integramos y capacitamos a tu equipo.</p>
+        </li>
+        <li class="step">
+          <span class="step__n">4</span>
+          <h3>Medición continua</h3>
+          <p>Seguimos los indicadores y mejoramos cada mes con datos reales.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- SISNE -->
+  <section class="section section--negro sisne" id="sisne">
+    <div class="container sisne__grid">
+      <div class="sisne__copy">
+        <p class="sisne__tag">La división de RYM TECH para pymes</p>
+        <p class="sisne__word" aria-label="SISNE">SISNE</p>
+        <h2 class="sisne__sub">Sistemas para negocios</h2>
+        <p class="lead lead--sm lead--onDark">SISNE reúne lo que una pyme necesita para dejar de trabajar a mano: sistemas simples de usar, implementados por etapas y con indicadores desde el primer día.</p>
+        <ul class="checks">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Sistemas pensados para la realidad de una pyme</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Implementación por etapas, sin frenar tu operación</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Tu equipo capacitado y acompañado</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Indicadores del negocio desde el primer día</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Mantenimiento a medida después de la implementación</li>
+        </ul>
+        <a class="btn btn--sky" href="#contacto">Quiero SISNE en mi empresa</a>
+      </div>
+
+      <div class="sisne__panel">
+        <h3 class="sisne__panel-title">Módulos de SISNE</h3>
+        <ul class="modules">
+          <li><b>Pedidos y ventas</b><span>Del presupuesto a la entrega, sin planillas.</span></li>
+          <li><b>Stock y compras</b><span>Existencias al día y alertas de reposición.</span></li>
+          <li><b>Clientes y seguimiento</b><span>Historial completo y próximos pasos.</span></li>
+          <li><b>Tareas y aprobaciones</b><span>Cada pedido con responsable y estado.</span></li>
+          <li><b>Tablero de métricas</b><span>Los números del negocio, siempre actualizados.</span></li>
+        </ul>
+        <p class="sisne__panel-note">Son ejemplos. Armamos los módulos según cómo funciona cada negocio.</p>
+        <ol class="stages" aria-label="Etapas">
+          <li>Ordená</li>
+          <li>Digitalizá</li>
+          <li>Medí</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADOS -->
+  <section class="section" id="resultados">
+    <div class="container">
+      <h2 class="h2 h2--wide">Lo que cambia cuando tu operación se mide.<span class="tpl tpl--inline">Plantilla</span></h2>
+      <div class="figures">
+        <div class="figure"><p class="figure__n">00%</p><p class="figure__l">menos tiempo en tareas manuales</p></div>
+        <div class="figure"><p class="figure__n">00 h</p><p class="figure__l">ahorradas por semana en cada equipo</p></div>
+        <div class="figure"><p class="figure__n">00%</p><p class="figure__l">menos errores de carga</p></div>
+        <div class="figure"><p class="figure__n">1</p><p class="figure__l">sola fuente de información para todo el equipo</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section class="section section--hielo" id="proyectos">
+    <div class="container">
+      <div class="proj-head">
+        <h2 class="h2">Proyectos</h2>
+        <p class="lead lead--sm">Procesos que ya digitalizamos y optimizamos, y qué cambió para cada empresa.</p>
+      </div>
+
+      <div class="projects">
+        <article class="proj proj--big">
+          <div class="proj__media"><svg class="ico ico--xl" aria-hidden="true"><use href="#i-image"/></svg><span>Imagen del proyecto</span></div>
+          <div class="proj__body">
+            <p class="proj__meta"><span>Rubro del cliente</span><span class="chip">Digitalización</span><span class="tpl">Plantilla</span></p>
+            <h3>Nombre del proyecto</h3>
+            <p>Describí en dos líneas el desafío del cliente, qué proceso era manual y qué hicimos para digitalizarlo.</p>
+            <p class="proj__result"><b>00%</b> menos tiempo en [proceso]</p>
+            <a class="link" href="#">Ver el caso completo</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="proj__media"><svg class="ico ico--xl" aria-hidden="true"><use href="#i-image"/></svg><span>Imagen del proyecto</span></div>
+          <div class="proj__body">
+            <p class="proj__meta"><span>Rubro del cliente</span><span class="chip">Optimización y tableros</span><span class="tpl">Plantilla</span></p>
+            <h3>Nombre del proyecto</h3>
+            <p>Resumen breve del desafío y de la solución implementada.</p>
+            <p class="proj__result"><b>00%</b> más pedidos por día</p>
+            <a class="link" href="#">Ver el caso completo</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <div class="proj__media"><svg class="ico ico--xl" aria-hidden="true"><use href="#i-image"/></svg><span>Imagen del proyecto</span></div>
+          <div class="proj__body">
+            <p class="proj__meta"><span>Rubro del cliente</span><span class="chip">Automatización con IA</span><span class="tpl">Plantilla</span></p>
+            <h3>Nombre del proyecto</h3>
+            <p>Resumen breve del desafío y de la solución implementada.</p>
+            <p class="proj__result"><b>00 h</b> ahorradas por semana</p>
+            <a class="link" href="#">Ver el caso completo</a>
+          </div>
+        </article>
+      </div>
+
+      <figure class="quote">
+        <blockquote>“Acá va el testimonio de un cliente: qué problema tenía y qué cambió en el día a día de su equipo.”</blockquote>
+        <figcaption>Nombre Apellido, cargo en Empresa<span class="tpl">Plantilla</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ESPÍRITU -->
+  <section class="section" id="nosotros">
+    <div class="container">
+      <h2 class="h2 h2--wide">Creemos que la tecnología tiene que ser simple de usar y fácil de medir.</h2>
+      <div class="values">
+        <div class="value">
+          <svg class="ico ico--lg" aria-hidden="true"><use href="#i-eye"/></svg>
+          <h3>Claridad</h3>
+          <p>Explicamos en simple qué hacemos, por qué lo hacemos y qué esperar en cada etapa.</p>
+        </div>
+        <div class="value">
+          <svg class="ico ico--lg" aria-hidden="true"><use href="#i-target"/></svg>
+          <h3>Pragmatismo</h3>
+          <p>Elegimos la solución que resuelve el problema, no la más sofisticada.</p>
+        </div>
+        <div class="value">
+          <svg class="ico ico--lg" aria-hidden="true"><use href="#i-pulse"/></svg>
+          <h3>Medición</h3>
+          <p>Lo que no se mide no se mejora. Cada proyecto arranca definiendo sus indicadores.</p>
+        </div>
+        <div class="value">
+          <svg class="ico ico--lg" aria-hidden="true"><use href="#i-users"/></svg>
+          <h3>Cercanía</h3>
+          <p>Trabajamos junto a tu equipo antes, durante y después de la implementación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--tight-top" id="faq">
+    <div class="container faq">
+      <h2 class="h2">Preguntas frecuentes</h2>
+      <div class="faq__list">
+        <details>
+          <summary>¿Mi empresa necesita inteligencia artificial?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p>No siempre. Primero entendemos el proceso. Muchas mejoras llegan con ordenar, digitalizar y automatizar. Sumamos IA solo cuando aporta un resultado claro.</p>
+        </details>
+        <details>
+          <summary>¿Para qué tamaño de empresa trabajan?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p>Trabajamos con pymes y empresas que hoy tienen procesos manuales. Para pymes tenemos una división propia: SISNE, Sistemas para negocios.</p>
+        </details>
+        <details>
+          <summary>¿Tengo que cambiar las herramientas que uso hoy?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p>No necesariamente. Siempre que se pueda, integramos lo que ya usás y reemplazamos solo lo que frena a tu equipo.</p>
+        </details>
+        <details>
+          <summary>¿Cómo se miden los resultados?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p>Definimos los indicadores juntos al empezar, por ejemplo tiempo por proceso, errores y volumen. Después los seguimos en un tablero que se actualiza de forma continua.</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa después de la implementación?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p>Seguimos acompañándote. Ofrecemos mantenimiento a medida: definimos juntos qué soporte, ajustes y mejoras necesita tu operación y armamos el plan en función de eso.</p>
+        </details>
+        <details>
+          <summary>¿Cómo empezamos?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p>Con una reunión para conocer tu operación. Después te proponemos un diagnóstico con alcance y próximos pasos.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="container contact__grid">
+      <div class="contact__copy">
+        <h2 class="h2">Contanos cómo trabajan hoy.</h2>
+        <p class="lead lead--sm lead--onSky">Escribinos qué proceso querés mejorar y te respondemos para coordinar una primera reunión.</p>
+        <ul class="contact__list">
+          <li><b>Email</b><a href="mailto:contacto@rymtech.com">contacto@rymtech.com</a></li>
+          <li><b>WhatsApp</b><a href="#">+54 9 11 0000 0000</a></li>
+          <li><b>LinkedIn</b><a href="#">linkedin.com/company/rymtech</a></li>
+        </ul>
+      </div>
+
+      <form class="form" id="contact-form" novalidate>
+        <div class="field">
+          <label for="f-nombre">Nombre</label>
+          <input id="f-nombre" name="nombre" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-empresa">Empresa</label>
+          <input id="f-empresa" name="empresa" type="text" autocomplete="organization" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-tamano">Tamaño de la empresa</label>
+          <select id="f-tamano" name="tamano">
+            <option value="">Elegí una opción</option>
+            <option>1 a 10 personas</option>
+            <option>11 a 50 personas</option>
+            <option>51 a 200 personas</option>
+            <option>Más de 200 personas</option>
+          </select>
+        </div>
+        <div class="field field--full">
+          <label for="f-mensaje">¿Qué proceso te gustaría mejorar?</label>
+          <textarea id="f-mensaje" name="mensaje" rows="4" required></textarea>
+        </div>
+        <div class="form__foot">
+          <button class="btn btn--dark" type="submit">Enviar consulta</button>
+          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="brand brand--light" href="#inicio" aria-label="RYM TECH, inicio">
+        <img src="assets/logo-mark.svg" alt="" width="36" height="36">
+        <span class="brand__name">RYM<span>TECH</span></span>
+      </a>
+      <p>Digitalización y optimización de procesos, con o sin IA, y métricas continuas para decidir mejor.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Pie de página">
+      <a href="#servicios">Servicios</a>
+      <a href="#ia">Con o sin IA</a>
+      <a href="#metodo">Método</a>
+      <a href="#sisne">SISNE</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <p class="footer__legal">© <span id="year">2026</span> RYM TECH. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
