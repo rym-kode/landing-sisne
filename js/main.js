@@ -1,4 +1,21 @@
-/* RYM TECH — landing */
+/* SISNE — landing (Developed by: Rym Tech) */
+
+/* ==========================================================================
+   CONFIGURACIÓN: cambiá estos datos y se actualizan en toda la página.
+   ========================================================================== */
+var SISNE_CONFIG = {
+  // TODO: número de WhatsApp Business, solo dígitos con código de país (54) y 9. Ej: "5491123456789"
+  whatsapp: "5491100000000",
+  // Cómo se muestra el número en la página
+  whatsappLabel: "+54 9 11 0000 0000",
+  // Mensaje que aparece escrito al abrir WhatsApp
+  whatsappMessage: "Hola SISNE! Quiero ordenar mi negocio. Me gustaría coordinar una reunión.",
+  // TODO: email corporativo
+  email: "contacto@sisne.com.ar",
+  // TODO: clave gratuita de https://web3forms.com (llega al email que registres).
+  // Mientras esté vacía, el formulario abre WhatsApp con los datos cargados.
+  web3formsKey: ""
+};
 (function () {
   "use strict";
 
@@ -94,60 +111,146 @@
     }
   }
 
-  /* --- Formulario de contacto --- */
-  // TODO: reemplazar por el email real de RYM TECH (o conectar un servicio de formularios).
-  var CONTACT_EMAIL = "contacto@rymtech.com";
+  /* --- Analítica: envía eventos si hay GA4, Plausible o GTM --- */
+  function track(name, params) {
+    try {
+      if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+      if (typeof window.plausible === "function") window.plausible(name, { props: params || {} });
+      if (Array.isArray(window.dataLayer)) window.dataLayer.push(Object.assign({ event: name }, params || {}));
+    } catch (e) { /* sin analítica */ }
+  }
 
+  /* --- Links de WhatsApp y email --- */
+  var cfg = window.SISNE_CONFIG || SISNE_CONFIG;
+  function waUrl(text) {
+    return "https://wa.me/" + cfg.whatsapp + "?text=" + encodeURIComponent(text || cfg.whatsappMessage);
+  }
+  document.querySelectorAll("[data-wa]").forEach(function (a) {
+    a.href = waUrl();
+    a.target = "_blank";
+    a.rel = "noopener";
+    if (a.hasAttribute("data-wa-text")) a.textContent = cfg.whatsappLabel;
+    a.addEventListener("click", function () { track("contact_whatsapp", { location: a.className || "link" }); });
+  });
+  document.querySelectorAll("[data-email]").forEach(function (a) {
+    a.href = "mailto:" + cfg.email;
+    a.textContent = cfg.email;
+  });
+
+  /* --- Barra fija en celular: aparece después del hero y se esconde en contacto --- */
+  var bar = document.getElementById("mobile-bar");
+  var hero = document.getElementById("inicio");
+  var contact = document.getElementById("contacto");
+  if (bar && hero && contact && "IntersectionObserver" in window) {
+    var heroVisible = true, contactVisible = false;
+    var update = function () { bar.classList.toggle("is-visible", !heroVisible && !contactVisible); };
+    new IntersectionObserver(function (e) { heroVisible = e[0].isIntersecting; update(); }).observe(hero);
+    new IntersectionObserver(function (e) { contactVisible = e[0].isIntersecting; update(); }).observe(contact);
+  }
+
+  /* --- Formulario de contacto --- */
   var form = document.getElementById("contact-form");
   var statusEl = document.getElementById("form-status");
+
+  function setError(input, msg) {
+    var field = input.closest(".field");
+    var err = field.querySelector(".field__error");
+    field.classList.toggle("has-error", !!msg);
+    input.setAttribute("aria-invalid", String(!!msg));
+    if (msg) {
+      if (!err) {
+        err = document.createElement("span");
+        err.className = "field__error";
+        err.id = input.id + "-error";
+        input.setAttribute("aria-describedby", err.id);
+        field.appendChild(err);
+      }
+      err.textContent = msg;
+    } else if (err) {
+      err.remove();
+      input.removeAttribute("aria-describedby");
+    }
+  }
 
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-
       var ok = true;
-      form.querySelectorAll("[required]").forEach(function (input) {
-        var field = input.closest(".field");
-        var err = field.querySelector(".field__error");
-        var valid = input.value.trim() !== "" && (input.type !== "email" || /^\S+@\S+\.\S+$/.test(input.value));
-        field.classList.toggle("has-error", !valid);
-        input.setAttribute("aria-invalid", String(!valid));
-        if (!valid) {
-          ok = false;
-          if (!err) {
-            err = document.createElement("span");
-            err.className = "field__error";
-            err.id = input.id + "-error";
-            input.setAttribute("aria-describedby", err.id);
-            field.appendChild(err);
-          }
-          err.textContent = input.type === "email" ? "Escribí un email válido, por ejemplo nombre@empresa.com." : "Completá este campo.";
-        } else if (err) {
-          err.remove();
-          input.removeAttribute("aria-describedby");
-        }
-      });
+
+      var nombre = form.querySelector("#f-nombre");
+      var wa = form.querySelector("#f-wa");
+      var email = form.querySelector("#f-email");
+
+      setError(nombre, nombre.value.trim() ? "" : "Completá tu nombre.");
+      if (!nombre.value.trim()) ok = false;
+
+      var digits = wa.value.replace(/\D/g, "");
+      var waOk = digits.length >= 8;
+      setError(wa, waOk ? "" : "Escribí un número de WhatsApp válido, por ejemplo 11 2345 6789.");
+      if (!waOk) ok = false;
+
+      var emailOk = !email.value.trim() || /^\S+@\S+\.\S+$/.test(email.value);
+      setError(email, emailOk ? "" : "Escribí un email válido, por ejemplo nombre@negocio.com.");
+      if (!emailOk) ok = false;
 
       if (!ok) {
         statusEl.textContent = "Revisá los campos marcados.";
-        var firstBad = form.querySelector(".has-error input, .has-error textarea");
+        var firstBad = form.querySelector(".has-error input");
         if (firstBad) firstBad.focus();
         return;
       }
 
       var d = new FormData(form);
-      var subject = "Consulta desde la web: " + d.get("empresa");
-      var body = [
+      if (d.get("botcheck")) return; // bot
+      var mejorar = d.getAll("mejorar").join(", ") || "-";
+      var resumen = [
         "Nombre: " + d.get("nombre"),
-        "Empresa: " + d.get("empresa"),
-        "Email: " + d.get("email"),
-        "Tamaño: " + (d.get("tamano") || "-"),
-        "",
-        d.get("mensaje")
+        "WhatsApp: " + d.get("whatsapp"),
+        "Email: " + (d.get("email") || "-"),
+        "Rubro: " + (d.get("rubro") || "-"),
+        "Quiere mejorar: " + mejorar,
+        "Mensaje: " + (d.get("mensaje") || "-")
       ].join("\n");
 
-      statusEl.textContent = "Abrimos tu programa de correo para enviar la consulta.";
-      window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      var btn = form.querySelector("button[type=submit]");
+
+      if (cfg.web3formsKey) {
+        btn.disabled = true;
+        statusEl.textContent = "Enviando…";
+        var payload = {
+          access_key: cfg.web3formsKey,
+          subject: "Nueva consulta SISNE: " + d.get("nombre"),
+          from_name: "Web SISNE",
+          nombre: d.get("nombre"),
+          whatsapp: d.get("whatsapp"),
+          email: d.get("email") || "",
+          rubro: d.get("rubro") || "",
+          quiere_mejorar: mejorar,
+          mensaje: d.get("mensaje") || ""
+        };
+        if (d.get("email")) payload.replyto = d.get("email");
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            if (!res.success) throw new Error(res.message);
+            form.reset();
+            statusEl.textContent = "¡Listo! Recibimos tu consulta y te escribimos por WhatsApp a la brevedad.";
+            track("generate_lead", { method: "form" });
+          })
+          .catch(function () {
+            statusEl.innerHTML = "No pudimos enviar el formulario. <a href=\"" + waUrl("Hola SISNE!\n" + resumen) + "\" target=\"_blank\" rel=\"noopener\">Mandanos los datos por WhatsApp</a>.";
+          })
+          .finally(function () { btn.disabled = false; });
+      } else {
+        // Sin servicio de formularios configurado: abre WhatsApp con la consulta escrita.
+        statusEl.textContent = "Abrimos WhatsApp con tu consulta para que la envíes.";
+        track("generate_lead", { method: "whatsapp_form" });
+        window.open(waUrl("Hola SISNE! Les dejo mi consulta:\n" + resumen), "_blank", "noopener");
+      }
     });
   }
 })();

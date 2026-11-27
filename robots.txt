@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: con el dominio definitivo, agregá:
+# Sitemap: https://www.TU-DOMINIO.com.ar/sitemap.xml

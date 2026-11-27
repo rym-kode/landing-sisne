@@ -1,17 +1,21 @@
 /* ==========================================================================
-   RYM TECH — landing
-   Paleta: blanco, celeste y negro.
+   SISNE — landing (Developed by: Rym Tech)
+   Paleta tomada del logo: azul marino, azul SISNE y blanco.
+   Nota: --negro se mantiene como nombre de variable, pero ahora es el azul marino del logo.
    ========================================================================== */
 
 :root {
   --blanco: #ffffff;
-  --negro: #000000;
-  --celeste: #4cc3f7;        /* color de acción y de datos */
-  --celeste-fuerte: #0877b3; /* celeste para texto sobre blanco (contraste AA) */
-  --hielo: #eef8fe;          /* fondo celeste muy claro */
-  --hielo-2: #d9effc;
-  --gris: #4d5864;           /* texto secundario */
-  --linea: #dbe6ee;
+  --negro: #01193a;          /* azul marino del logo: texto, bordes y fondos oscuros */
+  --marino-2: #0b2a55;       /* marino un poco más claro, para hover y paneles */
+  --azul: #0284e1;           /* azul de las barras del logo */
+  --celeste: #4fb0f2;        /* azul claro para fondos y acentos sobre marino */
+  --celeste-fuerte: #0270c0; /* azul para texto sobre blanco (contraste AA) */
+  --hielo: #eef5fc;          /* fondo azul muy claro */
+  --hielo-2: #d6e8f9;
+  --gris: #4a5f78;           /* gris azulado del "Sistemas para negocios" del logo */
+  --linea: #d8e3ef;
+  --wa: #25d366;
 
   --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
@@ -90,7 +94,7 @@ h3 { font-size: 1.25rem; line-height: 1.25; }
 
 .lead { font-size: clamp(1.1rem, 1.5vw, 1.3rem); line-height: 1.55; color: var(--gris); max-width: 58ch; }
 .lead--sm { font-size: 1.125rem; }
-.lead--onDark { color: #b8c4cf; }
+.lead--onDark { color: #b5c6db; }
 .lead--onSky { color: var(--negro); }
 
 /* --------------------------------------------------------------------------
@@ -106,7 +110,7 @@ h3 { font-size: 1.25rem; line-height: 1.25; }
 }
 .btn--sm { min-height: 44px; padding: 0 20px; font-size: 1rem; }
 .btn--dark { background: var(--negro); color: var(--blanco); }
-.btn--dark:hover { background: var(--celeste-fuerte); }
+.btn--dark:hover { background: var(--azul); }
 .btn--line { border-color: var(--negro); color: var(--negro); background: transparent; }
 .btn--line:hover { background: var(--negro); color: var(--blanco); }
 .btn--sky { background: var(--celeste); color: var(--negro); }
@@ -155,7 +159,6 @@ h3 { font-size: 1.25rem; line-height: 1.25; }
 .brand__name span { font-weight: 500; margin-left: 5px; color: var(--celeste-fuerte); }
 .brand__text { display: flex; flex-direction: column; gap: 4px; }
 .brand__by { font-family: var(--font-body, inherit); font-size: .68rem; font-weight: 500; letter-spacing: .02em; opacity: .7; line-height: 1; }
-.brand--light img { border-radius: 9px; outline: 1.5px solid #3a4854; outline-offset: -1.5px; }
 .brand--light .brand__name { color: var(--blanco); }
 .brand--light .brand__name span { color: var(--celeste); }
 
@@ -242,7 +245,7 @@ h3 { font-size: 1.25rem; line-height: 1.25; }
   aspect-ratio: 1; border: 1.5px solid var(--linea); border-radius: 3px; background: transparent;
   transition: background-color .45s ease, border-color .45s ease, opacity .45s ease;
 }
-.viz__grid .cell.has { background: #e8edf1; border-color: #d4dde4; }
+.viz__grid .cell.has { background: #e6edf5; border-color: #d0dcea; }
 .viz[data-state="after"] .cell { border-color: transparent; background: transparent; opacity: .0; }
 .viz[data-state="after"] .cell.lit { background: var(--celeste); border-color: var(--celeste); opacity: 1; }
 .viz[data-state="after"] .cell.top { background: var(--negro); border-color: var(--negro); }
@@ -266,7 +269,7 @@ h3 { font-size: 1.25rem; line-height: 1.25; }
 .clients__logos { display: flex; flex: 1; flex-wrap: wrap; gap: 14px; }
 .clients__logos li {
   flex: 1 1 130px; min-height: 56px; display: flex; align-items: center; justify-content: center;
-  border: 1.5px dashed #b8c8d4; border-radius: 10px; color: #7a8a97; font-size: .9rem; font-weight: 500;
+  border: 1.5px dashed #b3c6da; border-radius: 10px; color: #6f849c; font-size: .9rem; font-weight: 500;
 }
 @media (max-width: 760px) {
   .clients__wrap { flex-direction: column; align-items: stretch; gap: 20px; }
@@ -365,18 +368,18 @@ h3 { font-size: 1.25rem; line-height: 1.25; }
 .checks li { display: flex; gap: 12px; align-items: flex-start; font-weight: 500; }
 .checks .ico { color: var(--celeste); margin-top: 3px; stroke-width: 2.4; }
 
-.sisne__panel { border: 1.5px solid #33404b; border-radius: 16px; padding: clamp(20px, 3vw, 36px); background: #0a0a0a; }
+.sisne__panel { border: 1.5px solid #22406b; border-radius: 16px; padding: clamp(20px, 3vw, 36px); background: #021230; }
 .sisne__panel-title { font-size: 1.1rem; color: var(--celeste); font-weight: 600; margin-bottom: 8px; }
-.modules li { display: flex; flex-direction: column; gap: 2px; padding: 16px 0; border-bottom: 1.5px solid #26303a; }
+.modules li { display: flex; flex-direction: column; gap: 2px; padding: 16px 0; border-bottom: 1.5px solid #1b3458; }
 .modules b { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em; }
-.modules span { color: #9fb0bf; font-size: .98rem; }
-.sisne__panel-note { margin-top: 16px; color: #8497a7; font-size: .9rem; }
+.modules span { color: #a3b8d0; font-size: .98rem; }
+.sisne__panel-note { margin-top: 16px; color: #8aa2be; font-size: .9rem; }
 .stages { display: flex; margin-top: 24px; }
 .stages li {
   flex: 1; text-align: center; padding: 12px 8px; font-family: var(--font-display); font-weight: 700; color: var(--negro);
 }
 .stages li:nth-child(1) { background: var(--hielo-2); border-radius: 999px 0 0 999px; }
-.stages li:nth-child(2) { background: #94d8fa; }
+.stages li:nth-child(2) { background: #93c8f5; }
 .stages li:nth-child(3) { background: var(--celeste); border-radius: 0 999px 999px 0; }
 
 @media (max-width: 900px) { .sisne__grid { grid-template-columns: 1fr; } }
@@ -413,7 +416,7 @@ h3 { font-size: 1.25rem; line-height: 1.25; }
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
   min-height: 150px; flex: 0 0 auto; color: var(--celeste-fuerte); font-size: .9rem; font-weight: 500;
   background:
-    repeating-linear-gradient(135deg, transparent 0 14px, rgba(76, 195, 247, .18) 14px 15px),
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(79, 176, 242, .18) 14px 15px),
     var(--hielo-2);
   border-bottom: 2px solid var(--negro);
 }
@@ -481,7 +484,7 @@ details p { padding: 0 48px 24px 0; color: var(--gris); max-width: 62ch; }
 .contact__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(36px, 6vw, 96px); align-items: start; }
 .contact__copy .lead { margin-top: 20px; }
 .contact__list { margin-top: 40px; border-top: 3px solid var(--negro); }
-.contact__list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 16px 0; border-bottom: 1.5px solid rgba(0, 0, 0, .25); }
+.contact__list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 16px 0; border-bottom: 1.5px solid rgba(1, 25, 58, .25); }
 .contact__list b { font-family: var(--font-display); }
 .contact__list a { text-underline-offset: 4px; font-weight: 500; }
 
@@ -494,12 +497,12 @@ details p { padding: 0 48px 24px 0; color: var(--gris); max-width: 62ch; }
 .field label { font-weight: 600; font-size: .95rem; }
 .field input, .field select, .field textarea {
   width: 100%; min-height: 50px; padding: 12px 14px; background: var(--blanco);
-  border: 1.5px solid #9fb2c0; border-radius: 10px;
+  border: 1.5px solid #9db3cb; border-radius: 10px;
   transition: border-color .15s ease, box-shadow .15s ease;
 }
 .field textarea { resize: vertical; min-height: 120px; }
 .field input:hover, .field select:hover, .field textarea:hover { border-color: var(--negro); }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--negro); box-shadow: 0 0 0 4px rgba(76, 195, 247, .55); }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--negro); box-shadow: 0 0 0 4px rgba(79, 176, 242, .5); }
 .field.has-error input, .field.has-error textarea { border-color: #b3261e; }
 .field__error { color: #b3261e; font-size: .88rem; font-weight: 500; }
 .form__foot { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px 20px; flex-wrap: wrap; }
@@ -511,13 +514,13 @@ details p { padding: 0 48px 24px 0; color: var(--gris); max-width: 62ch; }
 /* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */
-.footer { background: var(--negro); color: #b8c4cf; padding-block: 56px 40px; }
+.footer { background: var(--negro); color: #b5c6db; padding-block: 56px 40px; }
 .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px 64px; }
 .footer__brand p { margin-top: 16px; max-width: 40ch; }
 .footer__nav { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; align-content: start; }
 .footer__nav a { text-decoration: none; color: var(--blanco); font-weight: 500; }
 .footer__nav a:hover { color: var(--celeste); }
-.footer__legal { grid-column: 1 / -1; padding-top: 28px; border-top: 1.5px solid #26303a; font-size: .9rem; }
+.footer__legal { grid-column: 1 / -1; padding-top: 28px; border-top: 1.5px solid #1b3458; font-size: .9rem; }
 .footer :focus-visible { outline-color: var(--celeste); }
 
 @media (max-width: 700px) { .footer__grid { grid-template-columns: 1fr; } }
@@ -527,4 +530,118 @@ details p { padding: 0 48px 24px 0; color: var(--gris); max-width: 62ch; }
 /* Reduced motion: sin transiciones decorativas */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; transition-delay: 0s !important; }
+}
+
+
+/* ==========================================================================
+   SISNE — componentes nuevos
+   ========================================================================== */
+
+/* Marca */
+.brand__logo { height: 40px; width: auto; }
+.brand__by {
+  padding-left: 12px; border-left: 1.5px solid var(--linea);
+  font-family: var(--font-body); font-size: .7rem; font-weight: 500; line-height: 1.25; color: var(--gris);
+}
+@media (max-width: 520px) { .brand__by { display: none; } }
+.footer__brand img { height: 48px; width: auto; }
+.footer__by { margin-top: 8px; font-size: .9rem; color: var(--celeste); font-weight: 500; }
+
+/* Texto chico arriba del H1 */
+.eyebrow {
+  display: inline-block; margin-bottom: 18px;
+  font-family: var(--font-display); font-weight: 600; font-size: .95rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--celeste-fuerte);
+}
+
+/* Encabezado de sección con bajada */
+.sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 64px; align-items: end; margin-bottom: clamp(36px, 5vw, 56px); }
+@media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; } }
+
+.actions--center { justify-content: center; margin-top: clamp(40px, 6vw, 64px); }
+
+/* Botones de WhatsApp */
+.btn--wa { gap: 10px; }
+.btn--wa .ico { width: 22px; height: 22px; }
+.btn--wa-solid { background: var(--wa); color: #05301a; gap: 8px; }
+.btn--wa-solid:hover { background: #1fb957; }
+
+/* Rubros */
+.rubros { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.rubro {
+  background: var(--blanco); border: 2px solid var(--negro); border-radius: 16px;
+  padding: 28px 24px; display: flex; flex-direction: column; gap: 10px;
+}
+.rubro .ico { color: var(--azul); margin-bottom: 6px; }
+.rubro h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; }
+.rubro > p { color: var(--gris); font-size: .98rem; }
+.rubro ul { display: grid; gap: 8px; margin-top: 8px; padding-top: 14px; border-top: 1.5px solid var(--linea); font-weight: 500; font-size: .96rem; }
+.rubro li { padding-left: 18px; position: relative; }
+.rubro li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 2px; background: var(--azul); }
+.rubros__more { margin-top: 32px; color: var(--gris); }
+@media (max-width: 1024px) { .rubros { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .rubros { grid-template-columns: 1fr; } }
+
+/* Logo grande en la sección oscura */
+.sisne__logo { width: min(100%, 420px); height: auto; margin-bottom: 28px; }
+
+/* Equipo */
+.team { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px clamp(32px, 6vw, 96px); align-items: center; }
+.team__copy .lead { margin-top: 20px; }
+.team__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.member { display: flex; flex-direction: column; gap: 4px; }
+.member__photo {
+  aspect-ratio: 1; border-radius: 16px; margin-bottom: 10px;
+  display: grid; place-items: center; color: #7f97b3;
+  background: var(--hielo); border: 1.5px dashed #b3c6da;
+}
+.member b { font-family: var(--font-display); font-size: 1.05rem; }
+.member span { color: var(--gris); font-size: .92rem; line-height: 1.35; }
+@media (max-width: 860px) { .team { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .team__list { grid-template-columns: 1fr 1fr; } }
+
+/* Formulario: opcionales, chips y honeypot */
+.opt { font-weight: 400; color: var(--gris); }
+.chips { border: 0; padding: 0; margin: 0; flex-direction: row; flex-wrap: wrap; gap: 10px; }
+.chips legend { font-weight: 600; font-size: .95rem; margin-bottom: 10px; padding: 0; }
+.chips label { cursor: pointer; position: relative; }
+.chips input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.chips span {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px;
+  border: 1.5px solid #9db3cb; border-radius: 999px; font-weight: 500; font-size: .95rem;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.chips label:hover span { border-color: var(--negro); }
+.chips input:checked + span { background: var(--negro); border-color: var(--negro); color: var(--blanco); }
+.chips input:focus-visible + span { outline: 3px solid var(--celeste-fuerte); outline-offset: 2px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.contact__wa { margin-top: 28px; }
+
+/* WhatsApp flotante (escritorio) */
+.wa-float {
+  position: fixed; right: 24px; bottom: 24px; z-index: 60;
+  width: 60px; height: 60px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--wa); color: #fff; box-shadow: 0 8px 24px rgba(1, 25, 58, .28);
+  transition: transform .18s ease;
+}
+.wa-float:hover { transform: scale(1.06); }
+.wa-float .ico { width: 30px; height: 30px; stroke-width: 1.7; }
+
+/* Barra fija (celular) */
+.mobile-bar { display: none; }
+@media (max-width: 700px) {
+  .wa-float { display: none; }
+  .mobile-bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    display: grid; grid-template-columns: 1fr 1.3fr; gap: 10px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, .96); border-top: 1px solid var(--linea);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    transform: translateY(110%); transition: transform .25s ease;
+  }
+  .mobile-bar.is-visible { transform: none; }
+  .mobile-bar .btn { min-height: 48px; padding: 0 14px; font-size: 1rem; }
+  body { padding-bottom: 76px; }
 }
