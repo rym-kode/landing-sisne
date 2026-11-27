@@ -32,3 +32,4 @@ Azul marino `#01193a` (variable `--negro`), azul SISNE `#0284e1`, azul claro `#4
 
 ## Tipografías
 Familjen Grotesk (títulos) e Instrument Sans (texto), desde Google Fonts.
+
